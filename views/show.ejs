@@ -1,0 +1,62 @@
+<%- include("partials/header"); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="img-thumbnail" style="display:flex  ; flex-wrap: wrap;">
+                <figure class="figure">
+                    <img src="<%= campground.image %>" >
+                    <figcaption class="figure-caption"><h1><%= campground.name%></h1></figcaption>
+                    <p><%= campground.description %></p>
+                    <p>Submitted by <%= campground.author.username %></p><br>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                    <a href="/campground/<%= campground._id %>/edit" class="btn btn-warning">Edit Your Blog</a>
+                    <form action="/campground/<%= campground._id %>?_method=DELETE " method="POST">
+                       <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <% } %>
+                  </figure>
+                  
+                </div>
+                <div class="well">
+                    <a class="btn btn-success" href="/campground/<%= campground._id %>/comments/new">Add your review</a>
+
+                    <% campground.comments.forEach(function(comment){ %>
+    
+                        <p>
+                            <strong><%= comment.author %></strong>-<%= comment.text %>
+                        
+                        </p>
+
+                </div>
+
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+<% }) %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include("partials/footer"); -%>

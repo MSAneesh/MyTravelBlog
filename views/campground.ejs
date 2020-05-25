@@ -1,0 +1,37 @@
+<%- include("partials/header"); -%>
+
+
+
+
+
+<div class="container">
+
+
+<header class="jumbotron">
+    <h1>TravelBLog</h1>
+    <p>Share your best experiences with the world!!!</p>
+    <a class="btn btn-primary" href="/campgrounds/new">Add your experience</a>
+
+</header>
+<div class="row text-center">
+<% campgrounds.forEach(function(cg){ %>
+    <div class="col-md-3 col-sm-6">
+        <div class="img-thumbnail" style="display:flex  ; flex-wrap: wrap;">
+        <figure class="figure">
+            <img src="<%= cg.image %>" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+            <figcaption class="figure-caption"><h4><%= cg.name %><h4></figcaption>
+          </figure>
+          <p style="margin: 0 auto;">
+              <a href="/campground/<%= cg._id %>" class="btn btn-primary">More Info</a>
+          </p>
+        </div>
+        
+       
+        
+        
+    </div>
+
+<%}) %>
+</div>
+</div>
+<%- include("partials/footer"); -%>
